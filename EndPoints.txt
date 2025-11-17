@@ -1,0 +1,24 @@
+Endpoints GET
+
+GET /games → Récupère la liste des identifiants des parties.
+
+GET /games/UUID → Récupère la liste des parties (objets Game).
+
+GET /games/{gameId} → Récupère les informations d’une partie spécifique.
+
+GET /games/{gameId}/tokens/from-board → Récupère les tokens présents sur le plateau.
+
+GET /games/{gameId}/tokens/from-remaining → Récupère les tokens restants non joués.
+
+GET /games/{gameId}/tokens/from-removed → Récupère les tokens retirés du plateau.
+
+GET /games/{gameId}/allowed-moves/from-remaining?name=... → Récupère les mouvements autorisés pour un token restant.
+
+GET /games/{gameId}/allowed-moves/from-board?x=...&y=... → Récupère les mouvements autorisés à partir d’une cellule du plateau.
+
+
+Endpoints POST
+
+POST /games → Crée une nouvelle partie.
+
+POST /games/{gameId}/play-move → Joue un coup dans la partie spécifiée.
