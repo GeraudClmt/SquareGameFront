@@ -7,7 +7,7 @@ import TicTacToeCaseComponent from '@/components/TicTacToeCaseComponent.vue';
 let axiosConnect = null
 const currentSymbolPlayer = ref("X")
 const playerSymbolList = ref(["X", "0"])
-const adressIp = ref("localhost:8181")
+const adressIp = ref("localhost:8080")
 const gameId = ref("")
 const gameStatus = ref("")
 let intervalId = null
@@ -84,10 +84,10 @@ const caseClick = async (caseNumber) => {
     try {
         if (board.value[caseNumber].symbol == "") {
             const json = {
-                name: currentSymbolPlayer.value,
-                toCell: coodinates[caseNumber]
+                tokenName: currentSymbolPlayer.value,
+                endPosition: coodinates[caseNumber]
             }
-            const response = await axiosConnect.post('/games/' + gameId.value + "/play-move", json, {
+            const response = await axiosConnect.post('/games/' + gameId.value + "/move-token", json, {
                 headers: {
                     'Content-Type': 'application/json'
                 }
@@ -108,7 +108,7 @@ const createGame = async () => {
 
     try {
         const json = {
-            identifier: 'tictactoe',
+            gameName: 'tictactoe',
             playerCount: 2,
             boardSize: 3
         }
